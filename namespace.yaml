@@ -1,0 +1,6 @@
+####Parametro "testing" es la variable de nombre que podemos seleccionar para realizar un namespace ###############
+
+kind: Namespace
+apiVersion: v1
+metadata:
+     name: testing
