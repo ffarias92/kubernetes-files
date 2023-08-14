@@ -1,0 +1,45 @@
+####### archivo de ejemplo para HPA  horizontal pod autoscalling para CPU#########
+
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: php-apache
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: php-apache
+  minReplicas: 1
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 50   
+
+############## el parametro averageUtilization mide el porcentaje de uso del recurso apuntado, en este caso CPU ########################
+###################### para memoria RAM #############
+#
+#
+#
+#  metrics:
+# type: Resource
+# resource:
+#   name: memory
+#   target:
+#     type: Utilization
+#
+#
+#
+#
+####################### para discos ###################
+#
+#metrics:
+#- type: Resource
+#  resource:
+#    name: storage
+#    target:
+#      type: Utilization
+#
